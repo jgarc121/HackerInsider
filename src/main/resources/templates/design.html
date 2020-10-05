@@ -10,17 +10,17 @@
 <body>
 
     <h1>Posts</h1>
-    <h3>Recent Breaches</h3>
+
     <div th:each="post : ${recentbreaches}">
-        <span th:text="${post.description}">EXAMPLE</span>
+        <span th:text="${post.name}">EXAMPLE</span>
     </div>
-    <h3>Best Security Practices</h3>
+
     <div th:each="post : ${bestsecuritypractices}">
-        <span th:text="${post.description}">EXAMPLE</span>
+        <span th:text="${post.name}">EXAMPLE</span>
     </div>
-    <h3>Zero Day Vulnerabilities</h3>
+
     <div th:each="post : ${zero_day}">
-        <span th:text="${post.description}">EXAMPLE</span>
+        <span th:text="${post.name}">EXAMPLE</span>
     </div>
     <p style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">Copyright @2020 Jose Garcia CS-321-1</p>
 </body>

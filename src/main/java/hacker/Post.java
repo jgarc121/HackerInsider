@@ -13,12 +13,10 @@ public class Post {
     private int num_comments = 0;
     private String date_created;
     private final String description;
-    private final Type type;
-    /*
-        This last object will be of Type Comment which will have information on the person that commented on it.
-        I have not yet created it therefore I will not have it included
-        private Comment comment;
-     */
+    private final PostType type;
+
+
+
     private void add_like() {
         this.num_likes++;
     }
@@ -31,8 +29,5 @@ public class Post {
         this.date_created = formatter.format(date);
     }
 
-    public static enum Type {
-        /* more types will be added in the future */
-        zero_day, recentBreaches, bestSecurityPractices
-    }
+
 }
