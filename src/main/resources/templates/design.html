@@ -10,16 +10,19 @@
 <body>
 
     <h1>Posts</h1>
-
+    <h3>Pick your type of post.</h3>
     <div th:each="post : ${recentbreaches}">
+        <input name="post" type="radio" th:value="${post.id}"/>
         <span th:text="${post.name}">EXAMPLE</span>
     </div>
 
     <div th:each="post : ${bestsecuritypractices}">
+        <input name="post" type="radio" th:value="${post.id}"/>
         <span th:text="${post.name}">EXAMPLE</span>
     </div>
 
     <div th:each="post : ${zero_day}">
+        <input name="post" type="radio" th:value="${post.id}"/>
         <span th:text="${post.name}">EXAMPLE</span>
     </div>
     <p style=" position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">Copyright @2020 Jose Garcia CS-321-1</p>
