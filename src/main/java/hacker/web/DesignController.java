@@ -1,18 +1,21 @@
 package hacker.web;
 import hacker.Post;
-import hacker.PostType.Type;
 import hacker.PostType;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
+@Slf4j
 @Controller
 @RequestMapping("/design")
 public class DesignController {
@@ -22,20 +25,20 @@ public class DesignController {
         return "design";
     }
 
+    @PostMapping
+    public String processDesign(@Valid @ModelAttribute("design") Post design, Errors errors) {
+        if (errors.hasErrors())
+            return "design";
+
+        log.info("Processing..." + design);
+        return "redirect:/posts/current";
+    }
+
     @ModelAttribute
     public void addAttributes(Model model) {
         List<PostType> posts = createPostList();
-        Type[] types = PostType.Type.values();
-        for (Type type: types) {
-            model.addAttribute(type.toString().toLowerCase(), filterByType(posts, type));
-        }
-    }
-
-    private List<PostType> filterByType(List<PostType> posts, Type type) {
-        return posts
-                .stream()
-                .filter(x -> x.getType().equals(type))
-                .collect(Collectors.toList());
+        model.addAttribute("allPosts", posts);
+        model.addAttribute("design", new Post());
     }
 
     private List<PostType> createPostList() {
