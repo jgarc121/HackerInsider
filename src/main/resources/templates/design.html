@@ -11,7 +11,7 @@
 
     <h1>Posts</h1>
         <h3>Type Of Post:</h3>
-        <form method="post" th:object="${design}">
+        <form method="post" th:object="${post}">
             <div th:each="ing : ${allPosts}">
                 <input name="posttype" type="radio" th:value="${ing.id}"/>
                 <span th:text="${ing.name}">EXAMPLE</span>
@@ -25,7 +25,6 @@
             <span style="color: #ff0000"
                   th:if="${#fields.hasErrors('fullName')}"
                   th:errors="*{fullName}">Name Error</span>
-
             </span>
             <br/><br/>
             <h3>Description:</h3>

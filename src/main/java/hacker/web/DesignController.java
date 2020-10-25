@@ -1,7 +1,10 @@
 package hacker.web;
 import hacker.Post;
 import hacker.PostType;
+import hacker.data.PostRepository;
+import hacker.data.PostTypeRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -20,34 +23,41 @@ import java.util.List;
 @RequestMapping("/design")
 public class DesignController {
 
+    private final PostTypeRepository postTypeRepo;
+    private final PostRepository postRepo;
+
+    @Autowired
+    public DesignController(PostTypeRepository postTypeRepo, PostRepository postRepo) {
+        this.postTypeRepo = postTypeRepo;
+        this.postRepo = postRepo;
+    }
+
     @GetMapping
     public String showDesignForm() {
         return "design";
     }
 
     @PostMapping
-    public String processDesign(@Valid @ModelAttribute("design") Post design, Errors errors) {
+    public String processDesign(@Valid @ModelAttribute("post") Post post, Errors errors) {
         if (errors.hasErrors())
             return "design";
 
-        log.info("Processing..." + design);
+        Post savedPost = postRepo.save(post);
+        log.info("Processing..." + post);
         return "redirect:/posts/current";
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
-        List<PostType> posts = createPostList();
+        List<PostType> posts = (List<PostType>) postTypeRepo.findAll();
         model.addAttribute("allPosts", posts);
-        model.addAttribute("design", new Post());
+
+       // model.addAttribute("design", new Post());
     }
 
-    private List<PostType> createPostList() {
-        List<PostType> posts = Arrays.asList(
-                new PostType("RB", "Recent Breaches", PostType.Type.recentBreaches),
-                new PostType("BSP", "Best Security Practices", PostType.Type.bestSecurityPractices),
-                new PostType("ZD", "Zero Day Vulnerabilities", PostType.Type.zero_day)
-        );
-
-        return posts;
+    @ModelAttribute(name = "post")
+    public Post addPostToModel() {
+        return new Post();
     }
+
 }
