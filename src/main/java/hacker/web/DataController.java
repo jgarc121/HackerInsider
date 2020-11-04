@@ -1,6 +1,6 @@
 package hacker.web;
 
-import hacker.Post;
+import hacker.SecurityPost;
 import hacker.PostType;
 import hacker.data.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class DataController {
 
     @ModelAttribute
     public void addAttributes(Model model) {
-        List<Post> posts = (List<Post>) postRepo.findAll();
+        List<SecurityPost> posts = (List<SecurityPost>) postRepo.findAll();
         model.addAttribute("allPosts", posts);
 
         // model.addAttribute("design", new Post());

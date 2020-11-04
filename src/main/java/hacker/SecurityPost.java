@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Data
 @Entity
-public class Post {
+public class SecurityPost {
 
     @NotNull(message = "Name is required")
     @Size(min = 3, message = "Name must be at least 3 characters long")

@@ -1,9 +1,9 @@
 package hacker.data;
 
-import hacker.Post;
+import hacker.SecurityPost;
 import org.springframework.data.repository.CrudRepository;
 
-public interface PostRepository extends CrudRepository<Post, Long> {
+public interface PostRepository extends CrudRepository<SecurityPost, Long> {
 
 
 

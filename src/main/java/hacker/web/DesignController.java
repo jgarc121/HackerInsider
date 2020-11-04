@@ -1,5 +1,5 @@
 package hacker.web;
-import hacker.Post;
+import hacker.SecurityPost;
 import hacker.PostType;
 import hacker.data.PostRepository;
 import hacker.data.PostTypeRepository;
@@ -38,11 +38,11 @@ public class DesignController {
     }
 
     @PostMapping
-    public String processDesign(@Valid @ModelAttribute("post") Post post, Errors errors) {
+    public String processDesign(@Valid @ModelAttribute("post") SecurityPost post, Errors errors) {
         if (errors.hasErrors())
             return "design";
 
-        Post savedPost = postRepo.save(post);
+        SecurityPost savedPost = postRepo.save(post);
         log.info("Processing..." + post);
         return "redirect:/posts/current";
     }
@@ -56,8 +56,8 @@ public class DesignController {
     }
 
     @ModelAttribute(name = "post")
-    public Post addPostToModel() {
-        return new Post();
+    public SecurityPost addPostToModel() {
+        return new SecurityPost();
     }
 
 }
