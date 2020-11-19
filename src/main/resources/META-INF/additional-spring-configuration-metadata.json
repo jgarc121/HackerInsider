@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "hacker.post.pageSize",
+      "type": "java.lang.Integer",
+      "description": "This sets the maximum number of posts to display in a list ."
+  }
+] }
