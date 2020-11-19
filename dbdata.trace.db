@@ -1,3 +1,0 @@
-2020-10-25 17:59:46 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "STRINGDECODE('BREACCHHHHH BREACCHHHHH BREACCHHHHH BREACCHHHHH\r\nBREACCHHHHH BREACCHHHHH BREACCHHHHH BREACCHHHHHBREACCHHHHH BREA... (284)"; SQL statement:
-insert into post (created_at, description, full_name, posttype, id) values (?, ?, ?, ?, ?) [22001-200]
