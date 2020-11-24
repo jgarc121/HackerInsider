@@ -25,6 +25,8 @@
                     <p>
                         <span th:text="${ing.description}">Description</span>
                     </p>
+                    <a class="btn-primary btn" role="button" th:href="@{/editPost/{postID}(postID=${ing.id})}"/>Edit</a>
+
                 </div>
             </div>
         </div>

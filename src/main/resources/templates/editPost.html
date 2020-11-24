@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/base :: headContent"></head>
 <body>
-$END$
+<nav th:replace="fragments/base :: navigation"></nav>
+
+<div class="container login-form">
+    <div class="row justify-content-center ">
+        <div class="col-md-4">
+
+            <br/>
+            <img th:src="@{/images/hacker-man.jpg}" style="height: 250px;"/>
+        </div>
+        <div class="col-8">
+            <h1>Edit Post</h1>
+            <br/>
+            <div class="form-group">
+                <form method="post" th:object="${securityPost}" th:action="@{/editPost/update/{postID}(postID=${postID})}">
+                    <label class="col-form-label col-form-label-lg">Description:</label>
+                    <div>
+                        <textarea th:value="*{description}" rows="15" class="form-control" th:name="description" th:text="*{description}"></textarea>
+                    </div>
+                    <input type="hidden" th:name="fullName" th:value="*{fullName}" id="fullName" class="form-control form-control-lg"/>
+                    <input type="hidden" th:name="posttype" th:value="*{posttype}" id="posttype" class="form-control form-control-lg"/>
+
+                    <br/>
+                    <input class="btn btn-primary" type="submit" value="Submit"/>
+
+                    <span style="color: #ff0000"
+                          th:if="${#fields.hasErrors('description')}"
+                          th:errors="*{description}">Description Error</span>
+                    </span>
+
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>

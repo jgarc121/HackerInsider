@@ -22,8 +22,8 @@ public class SecurityPost {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull(message = "Description must be at least 50 characters.")
-    @Size(min = 50, message = "Description must be at least 50 characters.")
+    @NotNull(message = "Description must be at least 5 characters.")
+    @Size(min = 5, message = "Description must be at least 5 characters.")
     private String description;
 
     @NotNull(message = "You must choose one type of post.")
@@ -36,6 +36,5 @@ public class SecurityPost {
     void createdAt() {
         this.createdAt = LocalDateTime.now();
     }
-
 
 }

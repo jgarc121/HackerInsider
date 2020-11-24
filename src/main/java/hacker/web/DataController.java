@@ -34,8 +34,6 @@ public class DataController {
 
     @GetMapping
     public String showDesignForm(Model model, @AuthenticationPrincipal User user) {
-
-
         addUserPostsToPage(model, user);
         return "data";
     }

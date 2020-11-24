@@ -48,7 +48,7 @@ public class RegistrationController {
             errors.rejectValue("username", "invalidUsername", "Username not available. Please choose another username.");
             return "/registration";
         }
-        return "redirect:/login";
+        return "redirect:/design";
     }
 
 
