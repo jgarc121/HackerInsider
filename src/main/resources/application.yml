@@ -16,7 +16,7 @@ spring:
     url: ${CLEARDB_DATABASE_URL}
     username: ${USERNAME}
     password: ${PASSWORD}
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Drivergit p
     initialization-mode: always
 
 
