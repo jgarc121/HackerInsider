@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/base :: headContent"></head>
+<body>
+<nav th:replace="fragments/base :: navigation"></nav>
+
+<div class="container login-form">
+
+    <div class="row justify-content-center ">
+        <div th:replace="fragments/base :: hackerImageLogo"></div>
+        <div class="col-8">
+            <h2>Edit Account Information</h2>
+            <div class="form-group">
+                <form method="post" class="registerForm" th:action="@{/editAccount}" th:object="${registrationForm}">
+
+                    <label for="fullName" class="col-form-label col-form-label-lg">Full Name:</label>
+                    <div>
+                        <input type="text" th:text="*{fullName}" th:name="fullName" th:value="${fullName}" id="fullName" class="form-control form-control-lg"/>
+                    </div>
+                    <span class="validationError" th:if="${#fields.hasErrors('fullName')}"
+                          th:errors="*{fullName}">Full Name Error</span>
+
+                    <label for="username" class="col-form-label col-form-label-lg">Username:</label>
+                    <div>
+                        <input type="text" th:text="*{username}" th:name="username" th:value="${username}" id="username" class="form-control form-control-lg"/>
+                    </div>
+                    <span class="validationError" th:if="${#fields.hasErrors('username')}"
+                          th:errors="*{username}">Full Name Error</span>
+
+                    <label for="password" class="col-form-label col-form-label-lg">Password:</label>
+                    <div>
+                        <input placeholder="Type in new or existing password" type="password" th:name="password" th:value="*{password}" id="password" class="form-control form-control-lg"/>
+                    </div>
+                    <span class="validationError" th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}">Password Error</span>
+
+                    <label for="jobRole" class="col-form-label col-form-label-lg">Job Role:</label>
+                    <div>
+                        <input type="text" th:value="${jobRole}" th:name="jobRole"  id="jobRole" class="form-control form-control-lg"/>
+                    </div>
+                    <span class="validationError" th:if="${#fields.hasErrors('jobRole')}"
+                          th:errors="*{jobRole}">Job Role Error</span>
+
+                    <label for="linkedInURL" class="col-form-label col-form-label-lg">LinkedIn:</label>
+                    <div>
+                        <input type="text" th:name="linkedInURL" th:value="${linkedin}" id="linkedInURL" class="form-control form-control-lg"/>
+                    </div>
+                    <span class="validationError" th:if="${#fields.hasErrors('linkedInURL')}"
+                          th:errors="*{linkedInURL}">LinkedIn Error</span>
+                    <br/>
+                    <input class="btn btn-primary" type="submit" value="Update"/>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/base :: scripts"></div>
+</body>
+</html>

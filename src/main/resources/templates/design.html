@@ -13,13 +13,24 @@
                 <h1><b>Create A Post</b></h1>
                 <div class="form-group">
                     <form method="post" th:object="${post}">
-                        <label class="col-form-label col-form-label-lg">Full Name:</label>
-                        <div>
-                            <input type="text" th:name="fullName" th:value="${fullName}" id="fullName" class="form-control form-control-lg"/>
-                        </div>
+
+                        <input type="hidden" th:name="fullName" th:value="${fullName}" id="fullName" class="form-control form-control-lg"/>
+                        <input type="hidden" th:name="jobRole" th:value="${jobRole}" id="jobRole" class="form-control form-control-lg"/>
+
+
                         <span style="color: #ff0000"
                               th:if="${#fields.hasErrors('fullName')}"
                               th:errors="*{fullName}">Name Error</span>
+                        </span>
+                        <br/>
+
+                        <label class="col-form-label col-form-label-lg">Title</label>
+                        <div>
+                            <input type="text" th:name="title" th:value="${title}" id="title" class="form-control form-control-lg"/>
+                        </div>
+                        <span style="color: #ff0000"
+                              th:if="${#fields.hasErrors('title')}"
+                              th:errors="*{title}">Title Error</span>
                         </span>
                         <br/>
 

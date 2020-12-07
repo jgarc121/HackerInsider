@@ -16,8 +16,9 @@ public interface PostRepository extends CrudRepository<SecurityPost, Long> {
 
     List<SecurityPost> findAllByUser(User user, Pageable pageable);
 
-    SecurityPost findById(long id);
+    List<SecurityPost> findByPosttype(String posttype);
 
-    //SecurityPost findById(long id);
+
+
 
 }

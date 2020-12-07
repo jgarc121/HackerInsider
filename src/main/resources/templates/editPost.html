@@ -18,22 +18,39 @@
             <br/>
             <div class="form-group">
                 <form method="post" th:object="${securityPost}" th:action="@{/editPost/update/{postID}(postID=${postID})}">
+                    <label class="col-form-label col-form-label-lg">Title:</label>
+                    <div>
+                        <input type="text" th:name="title" th:value="*{title}" id="title" class="form-control form-control-lg"/>
+                    </div>
+                    <br/>
                     <label class="col-form-label col-form-label-lg">Description:</label>
                     <div>
                         <textarea th:value="*{description}" rows="15" class="form-control" th:name="description" th:text="*{description}"></textarea>
                     </div>
+                    <span style="color: #ff0000"
+                          th:if="${#fields.hasErrors('title')}"
+                          th:errors="*{title}">Title Error</span>
+                    </span>
                     <input type="hidden" th:name="fullName" th:value="*{fullName}" id="fullName" class="form-control form-control-lg"/>
                     <input type="hidden" th:name="posttype" th:value="*{posttype}" id="posttype" class="form-control form-control-lg"/>
 
                     <br/>
-                    <input class="btn btn-primary" type="submit" value="Submit"/>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-10">
+                                <p><a th:href="@{/data}" class="btn btn-outline-secondary btn-lg">Cancel</a></p>
+                            </div>
+                            <div class="col-2">
+                                <input class="btn btn-primary btn-lg" type="submit" value="Submit"/>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <span style="color: #ff0000"
                           th:if="${#fields.hasErrors('description')}"
                           th:errors="*{description}">Description Error</span>
                     </span>
-
-
 
                 </form>
             </div>

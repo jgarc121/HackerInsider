@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -42,6 +41,7 @@ public class DesignController {
 
     private void addUserInfoToModel(Model model, User user) {
         model.addAttribute("fullName", user.getFullName());
+        model.addAttribute("jobRole", user.getJobRole());
     }
 
     @PostMapping

@@ -20,13 +20,21 @@
                 <br/>
                 <div th:each="ing : ${allPostsForUser}">
                     <h3>
-                        <span th:text="${ing.posttype}">Post Type</span>
+                        <span th:text="${ing.title}">Title</span>
                     </h3>
+                    <small>
+                        Date Posted:
+                        <span th:text="${ing.getCreatedAt()}">Date</span>
+                    </small>
+                    <br/>
+                    <br/>
                     <p>
                         <span th:text="${ing.description}">Description</span>
                     </p>
                     <a class="btn-primary btn" role="button" th:href="@{/editPost/{postID}(postID=${ing.id})}"/>Edit</a>
-
+                    <a class="btn btn-danger" role="button" th:href="@{/deletePost/{postID}(postID=${ing.id})}">Delete</a>
+                    <br/>
+                    <hr/>
                 </div>
             </div>
         </div>

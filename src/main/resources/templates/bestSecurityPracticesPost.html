@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/base :: headContent"></head>
+<body>
+<nav th:replace="fragments/base :: navigation"></nav>
+
+<div class="container login-form">
+    <div class="row justify-content-center ">
+        <div class="col-md-4">
+            <img th:src="@{/images/hacker-man.jpg}" style="height: 250px;"/>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col">
+                    <h2>Best Security Practices</h2>
+                </div>
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Category
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" th:href="@{/recentBreachesPost}">Recent Breaches</a>
+                            <a class="dropdown-item" th:href="@{/bestSecurityPracticesPost}">Best Security Practices</a>
+                            <a class="dropdown-item" th:href="@{/zeroDayPost}">Zero Day Vulnerabilities</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+            <div th:each="ing : ${allPostsForUser}">
+
+                <h3>
+                    <span th:text="${ing.title}">Title</span>
+                </h3>
+                <small>
+                    By: <span th:text="${ing.fullName}">Name</span> |
+                    <span th:text="${ing.jobRole}">Job Role</span> |
+
+                    <span th:text="${ing.getCreatedAt()}">Date</span>
+                </small>
+                <br/>
+                <br/>
+                <p>
+                    <span th:text="${ing.description}">Description</span>
+                </p>
+                <hr/>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/base :: scripts"></div>
+</body>
+</html>

@@ -7,15 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
-@Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
-@RequiredArgsConstructor
+@Data
 public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
@@ -25,14 +23,20 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(unique = true)
-    private final String username;
+    private String username;
 
-    private final String password;
-    private final String fullName;
-    private final String jobRole;
-    private final String linkedInURL;
+    private String password;
+    private String fullName;
+    private String jobRole;
+    private String linkedInURL;
 
-    //users interests
+    public User(String username, String password, String fullName, String jobRole, String linkedInURL) {
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+        this.jobRole = jobRole;
+        this.linkedInURL = linkedInURL;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -25,8 +25,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(encoder());
-
-        //super.configure(auth);
     }
 
     @Bean
@@ -38,12 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/design", "/data","/editPost/**")
+                .antMatchers("/design", "/data","/editPost/**", "/userHome", "/postForm", "/deletePost/**", "/bestSecurityPracticesPost", "/recentBreachesPost",
+                        "/zeroDayPost", "/accountInformation", "/editAccount" )
                 .hasRole("USER")
-                .and()
-                .authorizeRequests()
-                .antMatchers("/h2-console/**", "/")
-                .permitAll()
             .and()
                 .formLogin().loginPage("/").defaultSuccessUrl("/design")
             .and()

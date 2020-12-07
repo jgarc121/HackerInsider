@@ -5,7 +5,6 @@ import hacker.SecurityPost;
 import hacker.data.PostRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.concurrent.DelegatingSecurityContextRunnable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -40,14 +39,12 @@ public class EditPostController {
 
         if (errors.hasFieldErrors())
             return "editPost";
-
-
         SecurityPost newSecurityPost = postRepo.findById(id).get();
         newSecurityPost.setDescription(securityPost.getDescription());
+        newSecurityPost.setTitle(securityPost.getTitle());
         postRepo.save(newSecurityPost);
         log.info("Processing... " + newSecurityPost);
         return "redirect:/data";
-
-
     }
+
 }

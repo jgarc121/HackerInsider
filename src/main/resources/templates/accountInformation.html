@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/base :: headContent"></head>
+<body>
+<nav th:replace="fragments/base :: navigation"></nav>
+
+<div class="container login-form">
+    <div class="row justify-content-center ">
+        <div class="col-md-4">
+            <br/>
+            <img th:src="@{/images/hacker-man.jpg}" style="height: 250px;"/>
+        </div>
+        <div class="col-8">
+            <h2>Account Information</h2>
+            <div class="row">
+                <div class="col">
+                    <br/>
+                    <p>Full Name: <b><span th:text="${userInfo.fullName}">NAME</span></b></p>
+                    <p>Username: <b><span th:text="${userInfo.username}">NAME</span></b></p>
+                    <p>Job Role: <b><span th:text="${userInfo.jobRole}">NAME</span></b></p>
+                    <p>LinkedIn URL: <b><span th:text="${userInfo.linkedInURL}">NAME</span></b></p>
+                    <p>Password: <b>*Encrypted*</b></p>
+                </div>
+                <div class="col">
+                    <br/>
+                    <p><a class="btn-primary btn" role="button" th:href="@{/editAccount}">Edit</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/base :: scripts"></div>
+</body>
+</html>

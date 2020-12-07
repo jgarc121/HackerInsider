@@ -25,13 +25,22 @@
                 th:if="${#authentication.getName().equals('anonymousUser')}" >
                 <a class="nav-link" th:href="@{/register}">Register</a>
             </li>
-            <li class="nav-item" th:classappend="${#request.getServletPath() == '/data' ? 'active' : ''}"
+            <li class="nav-item" th:classappend="${#request.getServletPath() == '/userHome' ? 'active' : ''}"
                 th:if="${!#authentication.getName().equals('anonymousUser')}" >
-                <a class="nav-link" th:href="@{/data}">Home - My Posts</a>
+                <a class="nav-link" th:href="@{/userHome}">Home</a>
             </li>
+
             <li class="nav-item" th:classappend="${#request.getServletPath() == '/design' ? 'active' : ''}"
                 th:if="${!#authentication.getName().equals('anonymousUser')}" >
                 <a class="nav-link" th:href="@{/design}">Create A Post</a>
+            </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath() == '/data' ? 'active' : ''}"
+                th:if="${!#authentication.getName().equals('anonymousUser')}" >
+                <a class="nav-link" th:href="@{/data}">My Posts</a>
+            </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath() == '/accountInformation' ? 'active' : ''}"
+                th:if="${!#authentication.getName().equals('anonymousUser')}" >
+                <a class="nav-link" th:href="@{/accountInformation}">Account</a>
             </li>
             <li class="nav-item" th:classappend="${#request.getServletPath() == '/logout' ? 'active' : ''}"
                 th:if="${!#authentication.getName().equals('anonymousUser')}" >
@@ -50,4 +59,9 @@
         <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
     </div>
+<footer th:fragment="footerJG">
+    <!-- Copyright -->
+    <div class="text-center">© 2020 Copyright: Jose Garcia</div>
+    <!-- Copyright -->
+</footer>
 

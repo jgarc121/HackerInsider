@@ -23,7 +23,7 @@ public class SecurityPost {
     private Long id;
 
     @NotNull(message = "Description must be at least 5 characters.")
-    @Size(min = 5, message = "Description must be at least 5 characters.")
+    @Size(min = 5, max = 255, message = "Description must be at least 5 characters and at most 255 characters.")
     private String description;
 
     @NotNull(message = "You must choose one type of post.")
@@ -37,4 +37,8 @@ public class SecurityPost {
         this.createdAt = LocalDateTime.now();
     }
 
+    @NotNull(message = "You must include a title.")
+    private String title;
+
+    private String jobRole;
 }
