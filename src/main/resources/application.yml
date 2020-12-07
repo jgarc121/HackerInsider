@@ -18,6 +18,7 @@ spring:
     password: ${PASSWORD}
     driver-class-name: com.mysql.jdbc.Driver
     initialization-mode: always
+    platform: mysql
 
 
 hacker:
