@@ -1,5 +1,3 @@
-//delete from Security_Post;
-
 delete from Post_Type;
 insert into Post_Type(id, name, type)
 values ('RB', 'Recent Breaches', 'recentBreaches');
