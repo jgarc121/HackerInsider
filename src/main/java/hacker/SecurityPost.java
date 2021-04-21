@@ -4,7 +4,9 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 
 @Data
@@ -14,7 +16,7 @@ public class SecurityPost {
     @NotNull(message = "Name is required")
     @Size(min = 3, message = "Name must be at least 3 characters long")
     private String fullName;
-    private LocalDateTime createdAt;
+    private String createdAt;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -31,7 +33,9 @@ public class SecurityPost {
 
     @PrePersist
     void createdAt() {
-        this.createdAt = LocalDateTime.now();
+        LocalDate today = LocalDate.now();
+        this.createdAt = today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
+        // this.createdAt = LocalDate.now();
     }
 
     @NotNull(message = "You must include a title.")
